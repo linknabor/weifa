@@ -70,6 +70,10 @@ public class AppConfig {
     private String redisHost;
     @Value(value = "${redis.port}")
     private String redisPort;
+    @Value(value = "${redis.password}")
+    private String redisPassWord;
+    @Value(value = "${redis.database}")
+    private String redisDatabase;
     
 
     public static void main(String[] args) {
@@ -154,6 +158,8 @@ public class AppConfig {
         connectionFactory.setHostName(redisHost);
         connectionFactory.setPort(Integer.valueOf(redisPort));
         connectionFactory.setUsePool(true);
+        connectionFactory.setPassword(redisPassWord);
+        connectionFactory.setDatabase(Integer.valueOf(redisDatabase));
         return connectionFactory;
     }
 
@@ -168,6 +174,7 @@ public class AppConfig {
         redisTemplate.setConnectionFactory(redisConnectionFactory());
         redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
         redisTemplate.setKeySerializer(new StringRedisSerializer());
+        
         return redisTemplate;
     }
     

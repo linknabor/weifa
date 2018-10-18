@@ -69,6 +69,10 @@ public class AppConfig {
     private String redisHost;
     @Value(value = "${redis.port}")
     private String redisPort;
+    @Value(value = "${redis.password}")
+    private String redisPassWord;
+    @Value(value = "${redis.database}")
+    private String redisDatabase;
 
 	@Value(value = "${mainRedis.host}")
     private String mainRedisHost;
@@ -79,6 +83,10 @@ public class AppConfig {
     private String baofangRedisHost;
     @Value(value = "${baofangRedis.port}")
     private String baofangRedisPort;
+    @Value(value = "${baofangRedis.password}")
+    private String baofangRedisPasswrod;
+    @Value(value = "${baofangRedis.database}")
+    private String baofangRedisDatabase;
     
     @Value(value = "${chunhuiRedis.host}")
     private String chunhuiRedisHost;
@@ -150,6 +158,8 @@ public class AppConfig {
         connectionFactory.setHostName(redisHost);
         connectionFactory.setPort(Integer.valueOf(redisPort));
         connectionFactory.setUsePool(true);
+        connectionFactory.setPassword(redisPassWord);
+        connectionFactory.setDatabase(Integer.valueOf(redisDatabase));
         return connectionFactory;
     }
 
@@ -169,6 +179,8 @@ public class AppConfig {
         connectionFactory.setHostName(baofangRedisHost);
         connectionFactory.setPort(Integer.valueOf(baofangRedisPort));
         connectionFactory.setUsePool(true);
+        connectionFactory.setPassword(baofangRedisPasswrod);
+        connectionFactory.setDatabase(Integer.valueOf(baofangRedisDatabase));
         return connectionFactory;
     }
     
